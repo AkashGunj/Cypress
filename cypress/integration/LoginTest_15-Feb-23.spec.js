@@ -12,4 +12,11 @@ describe('validate the login functionality',function(){
         cy.url().should('contain','https://practicetestautomation.com/logged-in-successfully/')
         cy.contains('Log out').should('be.visible')
     })
+    it('Verify login functionality with invalid username and valid pass',function(){
+        cy.visit('https://practicetestautomation.com/practice-test-login/')
+        cy.get('#username').type('stud')
+        cy.get('#password').type('Password123')
+        cy.get('#submit').click()
+        cy.contains('Your username is invalid!').should('be.visible')
+    })
 })
